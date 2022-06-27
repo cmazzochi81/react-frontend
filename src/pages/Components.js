@@ -631,7 +631,9 @@ export const EmailVerificationFail = () => {
       <h1 class="heading my-5 font-le-havre text-3xl">
         Email Verification Failure
       </h1>
-      <p class="font-raleway">Unfortunately we could not verify your email.</p>
+      <p class="font-raleway">
+        Unfortunately we could not verify your email. Try again.
+      </p>
 
       <button onClick={() => history.push("signup")}>Sign Up</button>
     </div>

@@ -223,7 +223,7 @@ export function ContactPage() {
   const history = useHistory();
   const formId = "U1gyO50K";
   const formSparkUrl = `https://submit-form.com/${formId}`;
-  const recaptchaKey = "6LdPweEfAAAAALsf6_mUATDqaEvYuG2vE1SLzB8G";
+  const recaptchaKey = "6Lfw2KUgAAAAABxiNpFlk9Vz3-nKRonFuqH2lJ1n";
   const recaptchaRef = useRef();
 
   const [submitting, setSubmitting] = useState(false);

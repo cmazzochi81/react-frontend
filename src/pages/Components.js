@@ -494,10 +494,13 @@ export const SignUpPage = () => {
 
   const onSignUpClicked = async () => {
     //alert('Sign up not implemented yet');
-    const response = await axios.post("http://localhost:8080/api/signup/", {
-      email: emailValue,
-      password: passwordValue,
-    });
+    const response = await axios.post(
+      "https://reactauth-backend.herokuapp.com/api/signup/",
+      {
+        email: emailValue,
+        password: passwordValue,
+      }
+    );
     const { token } = response.data;
     setToken(token);
     history.push("/please-verify");

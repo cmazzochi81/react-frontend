@@ -20,8 +20,6 @@ import "../critical.css";
 import "../nonCritical.css";
 import { useToken } from "../auth/useToken";
 import { useQueryParams } from "../util/useQueryParams";
-// import { EmailVerificationSuccess } from "./EmailVerificationSuccess";
-// import { EmailVerificationFail } from "./EmailVerificationFail";
 
 export const HomePage = () => {
   const history = useHistory();

@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@craco/craco": "^6.4.3",
+    "@craco/craco": "^5.9.0",
     "@formspark/use-formspark": "^0.1.38",
     "@tailwindcss/forms": "^0.3.3",
     "@testing-library/jest-dom": "5.11.9",
@@ -17,10 +17,10 @@
     "http-proxy-middleware": "^2.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-google-recaptcha": "^2.1.0",
     "react-icons": "^4.2.0",
     "react-router-dom": "5.2.0",
-    "react-scripts": "^5.0.0",
-    "react-google-recaptcha": "^2.1.0",
+    "react-scripts": "^5.0.1",
     "styled-components": "^5.3.3",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.4",
     "web-vitals": "1.1.1"

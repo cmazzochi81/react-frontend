@@ -15,7 +15,6 @@ import {
 import logo from "../logo.svg";
 import { useHistory, useParams } from "react-router-dom";
 import { Navigation } from "../components/Navigation";
-//import "../App.css";
 import "../critical.css";
 import "../nonCritical.css";
 import { useToken } from "../auth/useToken";
@@ -391,6 +390,19 @@ export const LogInPage = () => {
     loadOAuthUrl();
   }, []);
 
+  useEffect(() => {
+    const loadGoogleButton = async (e) => {
+      try {
+        e.preventDefault();
+        console.log("Testing loadGoogleButton function");
+        window.location.href = "/login";
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    loadGoogleButton();
+  }, []);
+
   const onLogInClicked = async () => {
     console.log("Testing login button");
 
@@ -453,6 +465,7 @@ export const LogInPage = () => {
         >
           Don't have an account? Sign Up
         </button>
+
         <button
           class="font-raleway"
           id="google-sign-in"
@@ -463,6 +476,7 @@ export const LogInPage = () => {
         >
           Log in with Google
         </button>
+
         <div
           class="font-raleway"
           id="google-sign-in"
@@ -470,6 +484,7 @@ export const LogInPage = () => {
             window.location.href = googleOAuthUrl;
           }}
         ></div>
+
         <button class="font-raleway" onClick={() => history.push("/")}>
           Back Home
         </button>

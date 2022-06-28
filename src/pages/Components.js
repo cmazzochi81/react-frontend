@@ -590,10 +590,9 @@ export const EmailVerificationLandingPage = () => {
   useEffect(() => {
     const loadVerification = async () => {
       try {
-        const response = await axios.put(
-          "https://reactauth-backend.herokuapp.com/api/confirm-email",
-          { verificationString }
-        );
+        const response = await axios.put("/api/verify-email", {
+          verificationString,
+        });
         const { token } = response.data;
         setToken(token);
         setIsSuccess(true);

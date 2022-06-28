@@ -1,1 +1,1 @@
-export { userInfoPage as default } from "./Components";
+export { UserInfoPage as default } from "./Components";

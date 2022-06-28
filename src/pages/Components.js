@@ -15,7 +15,7 @@ import {
 import logo from "../logo.svg";
 import { useHistory, useParams } from "react-router-dom";
 import { Navigation } from "../components/Navigation";
-import "../App.css";
+
 // import "../critical.css";
 // import "../nonCritical.css";
 import { useToken } from "../auth/useToken";

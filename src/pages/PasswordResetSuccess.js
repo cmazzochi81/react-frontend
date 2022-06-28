@@ -1,1 +1,1 @@
-export { PasswordResetSuccessPage as default } from "./Components";
+export { PasswordResetSuccess as default } from "./Components";

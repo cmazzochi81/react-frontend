@@ -49,7 +49,7 @@ export const App = () => {
                 <PleaseVerifyEmailPage />
               </Route>
 
-              <Route path="/confirm-email">
+              <Route path="/confirm-email/:verificationString">
                 <EmailVerificationLandingPage />
               </Route>
             </React.Suspense>

@@ -78,7 +78,7 @@ export const App = () => {
                 <ForgotPasswordPage />
               </Route>
 
-              <Route path="/reset-password">
+              <Route path="/password-reset-page">
                 <PasswordResetLandingPage />
               </Route>
 

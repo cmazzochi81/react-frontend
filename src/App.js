@@ -19,6 +19,18 @@ const ForgotPasswordPage = React.lazy(() =>
   import("./pages/ForgotPasswordPage")
 );
 
+const PasswordResetLandingPage = React.lazy(() =>
+  import("./pages/PasswordResetLandingPage")
+);
+
+const PasswordResetSuccess = React.lazy(() =>
+  import("./pages/PasswordResetSuccess")
+);
+
+const PasswordResetFailure = React.lazy(() =>
+  import("./pages/PasswordResetFailure")
+);
+
 export const App = () => {
   return (
     <div className="App">
@@ -64,6 +76,18 @@ export const App = () => {
 
               <Route path="/forgot-password">
                 <ForgotPasswordPage />
+              </Route>
+
+              <Route path="/forgot-password">
+                <PasswordResetLandingPage />
+              </Route>
+
+              <Route path="/password-success">
+                <PasswordResetSuccess />
+              </Route>
+
+              <Route path="/password-failure">
+                <PasswordResetFailure />
               </Route>
             </React.Suspense>
           </Switch>

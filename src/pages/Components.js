@@ -380,7 +380,7 @@ export const LogInPage = () => {
     const loadOAuthUrl = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8080/auth/google/url"
+          "https://reactauth-backend.herokuapp.com/auth/google/url"
         );
         const { url } = response.data;
         setGoogleOAuthUrl(url);
@@ -395,10 +395,13 @@ export const LogInPage = () => {
     console.log("Testing login button");
 
     try {
-      const response = await axios.post("http://localhost:8080/api/login", {
-        email: emailValue,
-        password: passwordValue,
-      });
+      const response = await axios.post(
+        "https://reactauth-backend.herokuapp.com/api/login",
+        {
+          email: emailValue,
+          password: passwordValue,
+        }
+      );
       const { token } = response.data;
       console.log(token);
       setToken(token);
@@ -590,9 +593,12 @@ export const EmailVerificationLandingPage = () => {
   useEffect(() => {
     const loadVerification = async () => {
       try {
-        const response = await axios.put("/api/verify-email", {
-          verificationString,
-        });
+        const response = await axios.put(
+          "https://reactauth-backend.herokuapp.com/api/verify-email",
+          {
+            verificationString,
+          }
+        );
         const { token } = response.data;
         setToken(token);
         setIsSuccess(true);

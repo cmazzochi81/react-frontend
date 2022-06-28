@@ -11,6 +11,9 @@ const PleaseVerifyEmailPage = React.lazy(() =>
   import("./pages/PleaseVerifyEmailPage")
 );
 
+const EmailVerificationLandingPage = React.lazy(() =>
+  import("./pages/EmailVerificationLandingPage")
+);
 export const App = () => {
   return (
     <div className="App">
@@ -44,6 +47,10 @@ export const App = () => {
 
               <Route path="/please-verify">
                 <PleaseVerifyEmailPage />
+              </Route>
+
+              <Route path="/confirm-email">
+                <EmailVerificationLandingPage />
               </Route>
             </React.Suspense>
           </Switch>

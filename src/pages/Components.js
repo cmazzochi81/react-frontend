@@ -836,13 +836,13 @@ export const ForgotPasswordPage = () => {
   return success ? (
     <div className="content-container">
       <h1 class="heading my-5 font-le-havre text-3xl">Success</h1>
-      <p class="font-raleway">Check hyour email for a reset link</p>
+      <p class="font-raleway">Check your email for a reset link</p>
     </div>
   ) : (
     <div className="content-container w-screen md:w-7/12">
       <h1 class="heading my-5 font-le-havre text-3xl">Forgot Password</h1>
       <p class="font-raleway">
-        Enter your email and we'll send you a reset lin
+        Enter your email and we'll send you a reset link
       </p>
       {errorMessage && <div className="fail">{errorMessage}</div>}
       <input

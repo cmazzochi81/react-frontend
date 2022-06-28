@@ -1,0 +1,189 @@
+//CRITICAL CSS
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  .App {
+    text-align: center;
+  }
+
+  .App-logo {
+    height: 10vmin;
+    pointer-events: none;
+    margin: 0 auto;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+      animation: App-logo-spin infinite 20s linear;
+    }
+  }
+
+  @keyframes App-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+      "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+      "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+      monospace;
+  }
+
+  h1 {
+    text-align: center;
+  }
+  button,
+  input {
+    border-radius: 8px;
+    box-sizing: border-box;
+    display: block;
+    font-size: 16px;
+    margin: 8px 0;
+    padding: 8px;
+    width: 100%;
+  }
+
+  .content-container {
+    background-color: white;
+    border-radius: 8px;
+    padding: 32px;
+    margin: 0 auto;
+    height: 100vh;
+  }
+
+  h1 {
+    color: #000;
+  }
+
+  .aboutText {
+    text-align: left;
+    margin-top: 2%;
+  }
+
+  .imageDiv {
+    //display: flex;
+  }
+
+  nav {
+    text-align: center;
+    margin-top: 2%;
+  }
+  nav a {
+    @apply font-thin;
+    @apply m-3;
+    @apply text-blue-600;
+  }
+
+  nav a:hover {
+    @apply text-green-600;
+  }
+
+  nav a:active {
+    @apply text-yellow-300;
+  }
+
+  ul {
+  }
+
+  ul li {
+    display: inline;
+  }
+
+  ul li a {
+    position: relative;
+  }
+
+  ul li a:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0px;
+    left: 30%;
+    background-color: red;
+    opacity: 0;
+    transform: scaleX(0);
+    transition: all 0.3s ease-in-out 0s;
+  }
+
+  ul li a:hover:before {
+    opacity: 1;
+    left: 0;
+    transform: scaleX(1);
+  }
+
+  .active {
+    color: green;
+  }
+
+  .text-red-500 {
+    @apply m-1;
+  }
+
+  .text-blue-500 {
+    @apply m-1;
+  }
+}
+
+//NON-CRITICAL
+#login-container {
+  width: 50%;
+  padding: 10%;
+  border: 2px solid red;
+}
+
+.bg-white {
+  margin: 0 auto;
+}
+.success {
+  background-color: #90ee90;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  padding: 16px;
+  text-align: center;
+}
+
+.fail {
+  background-color: #ffcccb;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  padding: 16px;
+  text-align: center;
+}
+
+#googleLoginSuggestionText {
+  text-align: center;
+}
+
+#loginLink {
+  text-align: center;
+}
+
+#portfolio {
+  display: flex;
+  flex-direction: column;
+}
+
+.portfolioItem {
+  text-align: left;
+}
+
+#shopMazzoImg {
+  height: 75%;
+}
+
+div.abcRioButton.abcRioButtonBlue {
+  width: 100% !important;
+}

@@ -16,12 +16,12 @@ export const Navigation = () => {
     document.querySelector("#homeLink").classList.add("active");
   }
 
-// function loadGoogleButton(e) {
-//     e.preventDefault();
-//     removeActiveHome();
-//     console.log("Testing loadGoogleButton function");
-//     window.location.href = "/login";
-//   }
+  function loadGoogleButton(e) {
+    e.preventDefault();
+    removeActiveHome();
+    console.log("Testing loadGoogleButton function");
+    window.location.href = "/login";
+  }
 
   return (
     <nav>
@@ -42,7 +42,7 @@ export const Navigation = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/login" onClick={removeActiveHome}>
+          <NavLink to="/login" onClick={loadGoogleButton}>
             Login
           </NavLink>
         </li>

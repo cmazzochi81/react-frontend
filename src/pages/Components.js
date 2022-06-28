@@ -390,18 +390,18 @@ export const LogInPage = () => {
     loadOAuthUrl();
   }, []);
 
-  useEffect(() => {
-    const loadGoogleButton = async (e) => {
-      try {
-        e.preventDefault();
-        console.log("Testing loadGoogleButton function");
-        window.location.href = "/login";
-      } catch (e) {
-        console.log(e);
-      }
-    };
-    loadGoogleButton();
-  }, []);
+  // useEffect(() => {
+  //   const loadGoogleButton = async (e) => {
+  //     try {
+  //       e.preventDefault();
+  //       console.log("Testing loadGoogleButton function");
+  //       window.location.href = "/login";
+  //     } catch (e) {
+  //       console.log(e);
+  //     }
+  //   };
+  //   loadGoogleButton();
+  // }, []);
 
   const onLogInClicked = async () => {
     console.log("Testing login button");

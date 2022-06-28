@@ -31,14 +31,6 @@ export const HomePage = () => {
     history.push("/");
   });
 
-  gapi.load("auth2", function () {
-    /* Ready. Make a call to gapi.auth2.init or some other API */
-    gapi.auth2.init({
-      client_id:
-        "997265959245-ge8fkun5p6ra82arodllg59kgqhnm572.apps.googleusercontent.com",
-    });
-  });
-
   return (
     <div class="content-container w-screen md:w-7/12  ">
       <img width="200" heiht="200" src={logo} className="App-logo" alt="logo" />
@@ -660,9 +652,7 @@ export const EmailVerificationFail = () => {
 
 export const UserInfoPage = () => {
   const user = useUser();
-
   const [token, setToken] = useToken();
-
   const { id, email, isVerified, info } = user;
 
   // We'll use the history to navigate the user
@@ -680,6 +670,14 @@ export const UserInfoPage = () => {
   // a network request (see JSX below).
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [showErrorMessage, setShowErrorMessage] = useState(false);
+
+  gapi.load("auth2", function () {
+    /* Ready. Make a call to gapi.auth2.init or some other API */
+    gapi.auth2.init({
+      client_id:
+        "997265959245-ge8fkun5p6ra82arodllg59kgqhnm572.apps.googleusercontent.com",
+    });
+  });
 
   // This useEffect hook automatically hides the
   // success and error messages after 3 seconds when they're shown.

@@ -381,7 +381,9 @@ export const LogInPage = () => {
   useEffect(() => {
     const loadOAuthUrl = async () => {
       try {
-        const response = await axios.get("/auth/google/url");
+        const response = await axios.get(
+          "https://reactauth-backend.herokuapp.com/auth/google/url"
+        );
         const { url } = response.data;
         setGoogleOAuthUrl(url);
       } catch (e) {

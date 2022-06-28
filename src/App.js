@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import * as React from "react";
-import "../App.css";
+import "./App.css";
 const HomePage = React.lazy(() => import("./pages/HomePage"));
 const AboutPage = React.lazy(() => import("./pages/AboutPage"));
 const PortfolioPage = React.lazy(() => import("./pages/PortfolioPage"));

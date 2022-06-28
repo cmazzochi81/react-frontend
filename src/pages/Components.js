@@ -374,7 +374,7 @@ export const LogInPage = () => {
   useEffect(() => {
     if (oAuthToken) {
       setToken(oAuthToken);
-      history.push("/user-profile");
+      history.push("/");
     }
   }, [oAuthToken, setToken, history]);
 

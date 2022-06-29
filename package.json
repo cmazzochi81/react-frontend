@@ -27,7 +27,7 @@
   },
   "scripts": {
     "build": "craco build",
-    "start": "craco start && postcss src/css/app.css -o public/app.css",
+    "start": "craco start",
     "test": "craco  test"
   },
 

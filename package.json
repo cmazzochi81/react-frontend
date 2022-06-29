@@ -30,6 +30,11 @@
     "start": "craco start && postcss src/css/app.css -o public/app.css",
     "test": "craco  test"
   },
+
+  "overrides": {
+    "autoprefixer": "10.4.5"
+},
+
   "eslintConfig": {
     "extends": [
       "react-app",

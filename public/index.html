@@ -31,16 +31,16 @@
         console.log(error);
       }
 
-      renderButton = () => {
-        gapi.signin2.render("google-sign-in", {
-          scope: "profile email",
-          longtitle: true,
-          theme: "dark",
-          onsuccess: onSuccess,
-          onfailure: onFailure,
-        });
-      };
+      // renderButton = () => {
+      //   gapi.signin2.render("google-sign-in", {
+      //     scope: "profile email",
+      //     longtitle: true,
+      //     theme: "dark",
+      //     onsuccess: onSuccess,
+      //     onfailure: onFailure,
+      //   });
+      // };
     </script>
-    <script src="https://apis.google.com/js/platform.js?onload=renderButton"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
   </body>
 </html>

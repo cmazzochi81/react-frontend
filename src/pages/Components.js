@@ -467,8 +467,9 @@ export const LogInPage = () => {
         </button>
 
         <button
-          className="font-Raleway"
-          id="google-sign-in"
+          className="g-signin2 font-Raleway"
+          data-onsuccess="onSignIn"
+          //id="google-sign-in"
           disabled={!googleOAuthUrl}
           onClick={() => {
             window.location.href = googleOAuthUrl;

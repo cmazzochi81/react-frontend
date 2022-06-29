@@ -382,7 +382,7 @@ export const LogInPage = () => {
     const loadOAuthUrl = async () => {
       try {
         const response = await axios.get(
-          "https://reactauth-backend.herokuapp.com/auth/google/url"
+          "http://localhost:8080/auth/google/url"
         );
         const { url } = response.data;
         setGoogleOAuthUrl(url);
@@ -410,13 +410,10 @@ export const LogInPage = () => {
     console.log("Testing login button");
 
     try {
-      const response = await axios.post(
-        "https://reactauth-backend.herokuapp.com/api/login",
-        {
-          email: emailValue,
-          password: passwordValue,
-        }
-      );
+      const response = await axios.post("http://localhost:8080/api/login", {
+        email: emailValue,
+        password: passwordValue,
+      });
       const { token } = response.data;
       console.log(token);
       setToken(token);
@@ -515,13 +512,10 @@ export const SignUpPage = () => {
 
   const onSignUpClicked = async () => {
     //alert('Sign up not implemented yet');
-    const response = await axios.post(
-      "https://reactauth-backend.herokuapp.com/api/signup/",
-      {
-        email: emailValue,
-        password: passwordValue,
-      }
-    );
+    const response = await axios.post("http://localhost:8080/api/signup/", {
+      email: emailValue,
+      password: passwordValue,
+    });
     const { token } = response.data;
     setToken(token);
     history.push("/please-verify");
@@ -612,7 +606,7 @@ export const EmailVerificationLandingPage = () => {
     const loadVerification = async () => {
       try {
         const response = await axios.put(
-          "https://reactauth-backend.herokuapp.com/api/verify-email",
+          "http://localhost:8080/api/verify-email",
           {
             verificationString,
           }
@@ -714,7 +708,7 @@ export const UserInfoPage = () => {
     //alert('Save functionality not implemented yet');
     try {
       const response = await axios.put(
-        `https://reactauth-backend.herokuapp.com/api/users/${id}`,
+        `http://localhost:8080/api/users/${id}`,
         {
           favoriteFood,
           hairColor,
@@ -821,7 +815,7 @@ export const ForgotPasswordPage = () => {
   const onSubmitClicked = async () => {
     try {
       await axios.put(
-        `https://reactauth-backend.herokuapp.com/api/forgot-password/${emailValue}`
+        `http://localhost:8080/api/forgot-password/${emailValue}`
       );
       setSuccess(true);
       setTimeout(() => {
@@ -877,7 +871,7 @@ export const PasswordResetLandingPage = () => {
   const onResetClicked = async () => {
     try {
       await axios.put(
-        `https://reactauth-backend.herokuapp.com/api/users/${passwordResetCode}/reset-password`,
+        `http://localhost:8080/api/users/${passwordResetCode}/reset-password`,
         { newPassword: passwordValue }
       );
       setIsSuccess(true);

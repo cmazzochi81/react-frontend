@@ -466,42 +466,18 @@ export const LogInPage = () => {
           Don't have an account? Sign Up
         </button>
 
-        {/* <div
-          id="g_id_onload"
-          data-client_id="997265959245-ge8fkun5p6ra82arodllg59kgqhnm572.apps.googleusercontent.com"
-          data-login_uri="http:localhost:3000/api/googlelogin"
-          data-auto_prompt="false"
-        ></div>
-        <div
-          class="g_id_signin"
-          data-type="standard"
-          data-size="large"
-          data-theme="outline"
-          data-text="sign_in_with"
-          data-shape="rectangular"
-          data-logo_alignment="left"
-        ></div> */}
-
-        {/* <button
+        <button
           className="font-Raleway"
           data-onsuccess="onSignIn"
-          id="google-sign-in"
+          id="my-signin2"
           disabled={!googleOAuthUrl}
           onClick={() => {
             window.location.href = googleOAuthUrl;
           }}
         >
           Log in with Google
-        </button> */}
+        </button>
 
-        {/* <div
-          className="font-Raleway"
-          id="google-sign-in"
-          onClick={() => {
-            window.location.href = googleOAuthUrl;
-          }}
-        ></div> */}
-        <div id="my-signin2"></div>
         <button className="font-Raleway" onClick={() => history.push("/")}>
           Back Home
         </button>

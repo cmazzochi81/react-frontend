@@ -393,19 +393,6 @@ export const LogInPage = () => {
     loadOAuthUrl();
   }, []);
 
-  // useEffect(() => {
-  //   const loadGoogleButton = async (e) => {
-  //     try {
-  //       e.preventDefault();
-  //       console.log("Testing loadGoogleButton function");
-  //       window.location.href = "/login";
-  //     } catch (e) {
-  //       console.log(e);
-  //     }
-  //   };
-  //   loadGoogleButton();
-  // }, []);
-
   const onLogInClicked = async () => {
     console.log("Testing login button");
 
@@ -430,7 +417,7 @@ export const LogInPage = () => {
 
         {errorMessage && <div className="fail">{errorMessage}</div>}
         <input
-          className="text-center font-Raleway"
+          className="login-input text-center font-Raleway"
           value={emailValue}
           //binding state to input
           onChange={(e) => setEmailValue(e.target.value)}
@@ -438,7 +425,7 @@ export const LogInPage = () => {
         />
 
         <input
-          className="text-center font-Raleway"
+          className="login-input text-center font-Raleway"
           value={passwordValue}
           //binding state to input
           onChange={(e) => setPasswordValue(e.target.value)}
@@ -446,7 +433,7 @@ export const LogInPage = () => {
         />
 
         <button
-          className="focus:ring-8 font-Raleway"
+          className="login-button focus:ring-8 font-Raleway"
           disabled={!emailValue || !passwordValue}
           onClick={onLogInClicked}
         >

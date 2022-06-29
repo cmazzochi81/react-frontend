@@ -410,6 +410,25 @@ export const LogInPage = () => {
     }
   };
 
+  const onSuccess = (googleUser) => {
+    console.log("Logged in as: " + googleUser.getBasicProfile().getName());
+  };
+
+  const onFailure = (error) => {
+    console.log(error);
+  };
+
+  const renderButton = async () => {
+    console.log("Render button fired!");
+    gapi.signin2.render("my-signin2", {
+      scope: "profile email",
+      longtitle: true,
+      theme: "dark",
+      onsuccess: onSuccess,
+      onfailure: onFailure,
+    });
+  };
+
   return (
     <div className="content-container w-screen md:w-7/12">
       <div id="login-container " className="bg-white w-4/5 md:w-5/12">
@@ -458,6 +477,7 @@ export const LogInPage = () => {
           data-onsuccess="onSignIn"
           id="my-signin2"
           disabled={!googleOAuthUrl}
+          onLoad={renderButton}
           onClick={() => {
             window.location.href = googleOAuthUrl;
           }}
@@ -663,11 +683,12 @@ export const UserInfoPage = () => {
 
   gapi.load("auth2", function () {
     /* Ready. Make a call to gapi.auth2.init or some other API */
+
     gapi.auth2.init({
       client_id:
         "997265959245-ge8fkun5p6ra82arodllg59kgqhnm572.apps.googleusercontent.com",
-    });
-  });
+    }); //end gapi.auth2.init
+  }); //end gapi.load auth2
 
   // This useEffect hook automatically hides the
   // success and error messages after 3 seconds when they're shown.

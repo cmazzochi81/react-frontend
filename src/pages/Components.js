@@ -381,9 +381,7 @@ export const LogInPage = () => {
   useEffect(() => {
     const loadOAuthUrl = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:8080/auth/google/url"
-        );
+        const response = await axios.get("/auth/google/url");
         const { url } = response.data;
         setGoogleOAuthUrl(url);
       } catch (e) {
@@ -410,7 +408,7 @@ export const LogInPage = () => {
     console.log("Testing login button");
 
     try {
-      const response = await axios.post("http://localhost:8080/api/login", {
+      const response = await axios.post("/api/login", {
         email: emailValue,
         password: passwordValue,
       });
@@ -512,7 +510,7 @@ export const SignUpPage = () => {
 
   const onSignUpClicked = async () => {
     //alert('Sign up not implemented yet');
-    const response = await axios.post("http://localhost:8080/api/signup/", {
+    const response = await axios.post("/api/signup/", {
       email: emailValue,
       password: passwordValue,
     });
@@ -605,12 +603,9 @@ export const EmailVerificationLandingPage = () => {
   useEffect(() => {
     const loadVerification = async () => {
       try {
-        const response = await axios.put(
-          "http://localhost:8080/api/verify-email",
-          {
-            verificationString,
-          }
-        );
+        const response = await axios.put("/api/verify-email", {
+          verificationString,
+        });
         const { token } = response.data;
         setToken(token);
         setIsSuccess(true);
@@ -708,7 +703,7 @@ export const UserInfoPage = () => {
     //alert('Save functionality not implemented yet');
     try {
       const response = await axios.put(
-        `http://localhost:8080/api/users/${id}`,
+        `/api/users/${id}`,
         {
           favoriteFood,
           hairColor,
@@ -814,9 +809,7 @@ export const ForgotPasswordPage = () => {
 
   const onSubmitClicked = async () => {
     try {
-      await axios.put(
-        `http://localhost:8080/api/forgot-password/${emailValue}`
-      );
+      await axios.put(`/api/forgot-password/${emailValue}`);
       setSuccess(true);
       setTimeout(() => {
         history.push("/login");
@@ -870,10 +863,9 @@ export const PasswordResetLandingPage = () => {
 
   const onResetClicked = async () => {
     try {
-      await axios.put(
-        `http://localhost:8080/api/users/${passwordResetCode}/reset-password`,
-        { newPassword: passwordValue }
-      );
+      await axios.put(`/api/users/${passwordResetCode}/reset-password`, {
+        newPassword: passwordValue,
+      });
       setIsSuccess(true);
     } catch (e) {
       console.log(e);

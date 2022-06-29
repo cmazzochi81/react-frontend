@@ -410,24 +410,24 @@ export const LogInPage = () => {
     }
   };
 
-  const onSuccess = (googleUser) => {
-    console.log("Logged in as: " + googleUser.getBasicProfile().getName());
-  };
+  // const onSuccess = (googleUser) => {
+  //   console.log("Logged in as: " + googleUser.getBasicProfile().getName());
+  // };
 
-  const onFailure = (error) => {
-    console.log(error);
-  };
+  // const onFailure = (error) => {
+  //   console.log(error);
+  // };
 
-  const renderButton = async () => {
-    console.log("Render button fired!");
-    gapi.signin2.render("my-signin2", {
-      scope: "profile email",
-      longtitle: true,
-      theme: "dark",
-      onsuccess: onSuccess,
-      onfailure: onFailure,
-    });
-  };
+  // const renderButton = async () => {
+  //   console.log("Render button fired!");
+  //   gapi.signin2.render("my-signin2", {
+  //     scope: "profile email",
+  //     longtitle: true,
+  //     theme: "dark",
+  //     onsuccess: onSuccess,
+  //     onfailure: onFailure,
+  //   });
+  // };
 
   return (
     <div className="content-container w-screen md:w-7/12">
@@ -472,18 +472,20 @@ export const LogInPage = () => {
           Don't have an account? Sign Up
         </button>
 
-        <button
+        <div class="g-signin2"></div>
+
+        {/* <button
           className="font-Raleway"
           data-onsuccess="onSignIn"
           id="my-signin2"
           disabled={!googleOAuthUrl}
-          onLoad={renderButton}
+          // onLoad={renderButton}
           onClick={() => {
             window.location.href = googleOAuthUrl;
           }}
         >
           Log in with Google
-        </button>
+        </button> */}
 
         <button className="font-Raleway" onClick={() => history.push("/")}>
           Back Home

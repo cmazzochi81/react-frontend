@@ -49,9 +49,23 @@
     box-sizing: border-box;
     display: block;
     font-size: 16px;
-    margin: 8px 0;
+    margin: 8px auto;
     padding: 8px;
-    width: 100%;
+    width: 300px;
+  }
+
+  .back-home-button {
+    background: #4285f4;
+    --tw-ring-color: rgb(7 89 133);
+  }
+  input[type="text"] {
+    border: 1px solid gray;
+    border-radius: 8px;
+  }
+
+  .signup-button {
+    background: #4285f4;
+    color: #fff;
   }
 
   .login-button {
@@ -59,41 +73,38 @@
     box-sizing: border-box;
     display: block;
     font-size: 16px;
-    margin: 8px 0;
+    margin: 8px auto;
     padding: 8px;
-    width: 100%;
-    background-color: blue;
+    width: 300px;
+    background-color: #4285f4;
+    color: #fff;
   }
 
+  /* #4285f4; */
+  #rc-anchor-container {
+    background-color: blue !important;
+  }
   .content-container {
-    background-color: white;
+    background-color: #000;
     border-radius: 8px;
     padding: 32px;
     margin: 0 auto;
-    height: 100vh;
+    /* height: 100vh; */
   }
 
   h1 {
     color: #000;
   }
 
-  .aboutText {
-    text-align: left;
-    margin-top: 2%;
-  }
-
-  .imageDiv {
-    //display: flex;
-  }
-
   nav {
     text-align: center;
-    margin-top: 2%;
+    /* margin-top: 2%; */
   }
   nav a {
     @apply font-thin;
     @apply m-3;
-    @apply text-blue-600;
+    /* @apply text-gray-900; */
+    color: white;
   }
 
   nav a:hover {
@@ -147,11 +158,11 @@
   }
 }
 
-#login-container {
+/* #login-container {
   width: 50%;
   padding: 10%;
   border: 2px solid red;
-}
+} */
 
 .bg-white {
   margin: 0 auto;

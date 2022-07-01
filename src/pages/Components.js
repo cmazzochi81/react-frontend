@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import ReCAPTCHA from "react-google-recaptcha";
 import {
-  Container,
   FormWrap,
   FormContent,
   Form,
@@ -22,6 +21,7 @@ import { useToken } from "../auth/useToken";
 import { useUser } from "../auth/useUser";
 import { useQueryParams } from "../util/useQueryParams";
 import { gapi } from "gapi-script";
+import { GoogleLogin, GoogleLogout } from "react-google-login";
 
 export const HomePage = () => {
   const history = useHistory();
@@ -32,31 +32,51 @@ export const HomePage = () => {
   });
 
   return (
-    <div className="content-container w-screen md:w-7/12  ">
-      <img width="200" heiht="200" src={logo} className="App-logo" alt="logo" />
+    <div className="content-container w-full md:w-7/12">
+      <img
+        width="200"
+        height="200"
+        src={logo}
+        className="App-logo"
+        alt="logo"
+      />
       <Navigation />
-      <h1 className="heading my-5 font-Le-Havre text-4xl">
-        Chris Mazzochi, React Developer
-      </h1>
-      <div className="imageDiv flex-wrap-nowrap ">
-        <p className="aboutText font-Raleway">
-          This web application demonstrates a full stack React login
-          authentication flow, using Google OAuth, SendGrid, and JSON Web
-          tokens. It uses fourteen components, and allows a user to sign up to
-          the site, by entering an email and password which is hashed, and
-          persisted in a MongoDb database. The user is also allowed to signup
-          using their Google accounts. Basic information Google’s API provides
-          is loaded and persisted in the MongoDb. Users can then continue to
-          login using their Google accounts. Once logged in the user is directed
-          to a profile page where they may enter some basic information. The
-          user may save data, but only when the user confirms the email they
-          used to register themselves with, that the application sends out via
-          SendGrid. The application uses a JSON web token, signed by my Node
-          server, to keep the user logged in. Finally, the application uses the
-          Tailwinds CSS framework, for the layout and styling and preprocessing.
+      <div className="H1andMainTextDiv bg-white p-10">
+        <h1 className="heading my-5 font-Le-Havre text-3xl">
+          Welcome to My Full Stack React Demo
+        </h1>
+        <p className="aboutText text-left font-Raleway">
+          This web application's target audience is a potential employer. The
+          emphasis here is on functionality. It demonstrates a full stack React
+          login authentication flow, using Google OAuth, SendGrid, and JSON Web
+          tokens. <br />
+          <br />
+          It allows a user to sign up to the site, by entering an email and
+          password, which is hashed, and persisted in a MongoDb database. From
+          there, the user can login, where they are then directed to a user
+          profile page, where they may enter some basic information. The user
+          may save data, but only when the user confirms the email they used to
+          register themselves with, that the application sends out via SendGrid.
+          The application uses a JSON web token, signed by my Node server, to
+          keep the user logged in. The user may of course logout and if the user
+          forgets their password, they are able to have an email sent to their
+          account with a password reset link.
+          <br />
+          <br />
+          The user is also allowed to signup using their Google accounts. Basic
+          information that Google’s API provides, is loaded and persisted, in
+          the MongoDb database. Users login using their Google accounts, and an
+          account, is created. Once logged in the user is directed to a profile
+          page, where they may enter some basic information. The user may save
+          data, but only when the user confirms the email they used to register
+          themselves with, that the application sends out via SendGrid. The
+          application uses a JSON web token, signed by my Node server, to keep
+          the user logged in.
+          <br />
+          <br />
         </p>
       </div>
-
+      {/*end H1andMainTextDiv*/}
       {/* <div className="underline" id="loginLink" onClick={() => window.location.href = "/login"}>Login</div> */}
     </div>
   );
@@ -82,7 +102,7 @@ export const AboutPage = () => {
   if (error) return <pre>{JSON.stringify(error, null, 2)}</pre>;
   if (!data) return null;
   return (
-    <div className="content-container w-screen md:w-7/12">
+    <div className="content-container w-full md:w-7/12 bg-black ">
       <img
         width="200"
         height="200"
@@ -92,30 +112,29 @@ export const AboutPage = () => {
       />
       <Navigation />
 
-      <h1 className="heading my-5 font-Le-Havre text-4xl">{data.name}</h1>
-      <div className="imageDiv flex-wrap ">
-        <img
-          id="aboutImg"
-          className=""
-          width="300"
-          src={data.avatar_url}
-          alt={data.login}
-        />
-        <p className="aboutText font-Raleway">
-          I am a perfect cross or hybrid of design and developer. I began my ten
-          year journey to development mastery, on the front end. Drawn by the
-          design possibilities, I very quickly became interested in what was
-          receiving requests from the front end, and where data was going to, or
-          coming from. In love with JavaScript because of the programmatic
-          nature of it, it was about this time I was hearing that I could now
-          use it on the front end, and back end, and began working with NodeJS.
-          Then frontend frameworks like Angular and React were introduced, and I
-          began working with them. My knowledge, ability and proficiency as a
-          developer is the result of a combination of formal education,
-          self-education, experience and excellent mentors.{" "}
-        </p>
+      <div className="H1andMainTextDiv p-5 bg-white">
+        <h1 className="heading font-Le-Havre text-4xl">{data.name}</h1>
+
+        <div className="imageDiv flex justify-between max-h-80  ">
+          <img
+            id="aboutImg"
+            className="flex float-none"
+            width="300"
+            src={data.avatar_url}
+            alt={data.login}
+          />
+          <p className="flex text-left bg-white border-blue aboutText p-4 font-Raleway w-full md:w-1/2">
+            I am a perfect cross or hybrid of design and developer. My favorite
+            framework is the React/NodeJS ecosystem. <br />
+            <br />
+            My skill and proficiency is the result of a combination of formal
+            education, self-education, experience, excellent mentors, and more
+            self-education. <br />
+          </p>
+        </div>
+        {/*end imageDiv */}
       </div>
-    </div>
+    </div> //end content-container
   );
 };
 
@@ -299,76 +318,118 @@ export function ContactPage() {
 
   return (
     <>
-      <Container>
-        <FormWrap>
-          {/* <Icon to="/">BWM</Icon> */}
-          <FormContent>
-            <Form>
-              <FormH1>Contact Us</FormH1>
-              {message && (
-                <div
-                  className={`postSubmitMessageDiv my-4 w-full p-4 ${message.className}`}
-                >
-                  {message.text}
-                </div>
-              )}
-              <FormLabel htmlFor="name">Name</FormLabel>
-              <FormInput
-                onChange={updateFormControl}
-                type="text"
-                id="name"
-                value={formState.name}
-                required
-              />
+      {/* <Container> */}
+      {/* <FormWrap> */}
+      {/* <FormContent> */}
 
-              <FormLabel htmlFor="email">E-mail</FormLabel>
-              <FormInput
-                onChange={updateFormControl}
-                type="email"
-                id="email"
-                value={formState.email}
-                required
-              />
+      <Form>
+        <FormH1>Contact Me</FormH1>
 
-              <FormLabel htmlFor="message">Message</FormLabel>
-              <FormInput
-                onChange={updateFormControl}
-                type="text"
-                id="message"
-                value={formState.message}
-              />
-              <ReCAPTCHADiv>
-                <ReCAPTCHA
-                  ref={recaptchaRef}
-                  sitekey={recaptchaKey}
-                  onChange={updateRecaptchaToken}
-                  id="recaptcha"
-                />
-              </ReCAPTCHADiv>
-              <FormButton
-                disabled={submitting}
-                type="button"
-                onClick={submitForm}
-              >
-                {submitting ? "Submitting..." : "Submit"}
-              </FormButton>
-            </Form>
-          </FormContent>
-        </FormWrap>
-      </Container>
+        <img
+          width="200"
+          heiht="200"
+          src={logo}
+          className="App-logo"
+          alt="logo"
+        />
+        {message && (
+          <div
+            className={`postSubmitMessageDiv my-1 w-full p-1 ${message.className}`}
+          >
+            {message.text}
+          </div>
+        )}
+
+        <FormLabel htmlFor="name">Name</FormLabel>
+
+        <FormInput
+          onChange={updateFormControl}
+          type="text"
+          id="name"
+          value={formState.name}
+          required
+        />
+
+        <FormLabel htmlFor="email">E-mail</FormLabel>
+        <FormInput
+          onChange={updateFormControl}
+          type="email"
+          id="email"
+          value={formState.email}
+          required
+        />
+
+        <FormLabel htmlFor="message">Message</FormLabel>
+        <FormInput
+          onChange={updateFormControl}
+          type="text"
+          id="message"
+          value={formState.message}
+        />
+
+        <FormButton disabled={submitting} type="button" onClick={submitForm}>
+          {submitting ? "Submitting..." : "Submit"}
+        </FormButton>
+
+        <ReCAPTCHADiv>
+          <ReCAPTCHA
+            ref={recaptchaRef}
+            sitekey={recaptchaKey}
+            onChange={updateRecaptchaToken}
+            id="recaptcha"
+          />
+        </ReCAPTCHADiv>
+
+        <button
+          className="back-home-button font-Raleway text-white"
+          onClick={() => history.push("/")}
+        >
+          Home
+        </button>
+      </Form>
+
+      {/* </FormContent> */}
+      {/* </FormWrap> */}
+      {/* </Container> */}
     </>
   );
 }
 
 export const LogInPage = () => {
+  function onSuccess(googleUser) {
+    console.log("Logged in as: " + googleUser.getBasicProfile().getName());
+  }
+
+  function onFailure(error) {
+    console.log(error);
+  }
+
+  gapi.load("auth2", function () {
+    /* Ready. Make a call to gapi.auth2.init or some other API */
+
+    gapi.auth2.init({
+      client_id:
+        "997265959245-ge8fkun5p6ra82arodllg59kgqhnm572.apps.googleusercontent.com",
+    }); //end gapi.auth2.init
+
+    gapi.load("signin2", () => {
+      const params = {
+        scope: "profile email",
+        longtitle: true,
+        theme: "dark",
+        onsuccess: onSuccess,
+        onfailure: onFailure,
+      };
+      gapi.signin2.render("loginButton", params);
+    }); //end gapi load signin2
+  }); //end gapi.load auth2
+
   const [errorMessage, setErrorMessage] = useState("");
   const [, setToken] = useToken();
-
   const [emailValue, setEmailValue] = useState("");
   const [passwordValue, setPasswordValue] = useState("");
   const [googleOAuthUrl, setGoogleOAuthUrl] = useState("");
   const { token: oAuthToken } = useQueryParams();
-
   const history = useHistory();
 
   useEffect(() => {
@@ -410,42 +471,32 @@ export const LogInPage = () => {
     }
   };
 
-  // const onSuccess = (googleUser) => {
-  //   console.log("Logged in as: " + googleUser.getBasicProfile().getName());
-  // };
-
-  // const onFailure = (error) => {
-  //   console.log(error);
-  // };
-
-  // const renderButton = async () => {
-  //   console.log("Render button fired!");
-  //   gapi.signin2.render("my-signin2", {
-  //     scope: "profile email",
-  //     longtitle: true,
-  //     theme: "dark",
-  //     onsuccess: onSuccess,
-  //     onfailure: onFailure,
-  //   });
-  // };
-
   return (
-    <div className="content-container w-screen md:w-7/12">
-      <div id="login-container " className="bg-white w-4/5 md:w-5/12">
-        <h1 className="heading my-5 font-Le-Havre text-3xl">Log In</h1>
+    <div className="content-container bg-black w-screen p-10 md:w-7/12">
+      <div id="login-container " className="bg-white p-1 w-4/5">
+        <img
+          width="200"
+          height="200"
+          src={logo}
+          className="App-logo"
+          alt="logo"
+        />
+        <h1 className="heading font-Le-Havre text-3xl">Log In</h1>
 
         {errorMessage && <div className="fail">{errorMessage}</div>}
         <input
-          className="login-input text-center font-Raleway"
+          className="login-input focus:ring-8  text-center font-Raleway "
           value={emailValue}
+          type="text"
           //binding state to input
           onChange={(e) => setEmailValue(e.target.value)}
-          placeholder="youremail@mail.com"
+          placeholder="youremail@mail.coms"
         />
 
         <input
-          className="login-input text-center font-Raleway"
+          className="login-input  focus:ring-8 text-center font-Raleway"
           value={passwordValue}
+          type="text"
           //binding state to input
           onChange={(e) => setPasswordValue(e.target.value)}
           placeholder="yourpassword"
@@ -460,24 +511,16 @@ export const LogInPage = () => {
         </button>
 
         <button
-          className="font-Raleway"
+          className="font-Raleway focus:ring-8"
           onClick={() => history.push("/forgot-password")}
         >
           Forgot your password?
         </button>
+
         <button
-          className="font-Raleway"
-          onClick={() => history.push("/signup-page")}
-        >
-          Don't have an account? Sign Up
-        </button>
-
-        <div class="g-signin2"></div>
-
-        {/* <button
-          className="font-Raleway"
+          className="font-Raleway focus:ring-8"
           data-onsuccess="onSignIn"
-          id="my-signin2"
+          id="loginButton"
           disabled={!googleOAuthUrl}
           // onLoad={renderButton}
           onClick={() => {
@@ -485,22 +528,27 @@ export const LogInPage = () => {
           }}
         >
           Log in with Google
-        </button> */}
-
-        <button className="font-Raleway" onClick={() => history.push("/")}>
-          Back Home
         </button>
-        <img
-          width="200"
-          height="200"
-          src={logo}
-          className="App-logo"
-          alt="logo"
-        />
+
+        <button
+          className="font-Raleway focus:ring-8"
+          onClick={() => history.push("/signup-page")}
+        >
+          Don't have an account? Sign Up
+        </button>
+
+        {/* <div class="g-signin2"></div> */}
+
+        <button
+          className="back-home-button font-Raleway focus:ring-8"
+          onClick={() => history.push("/")}
+        >
+          Home
+        </button>
       </div>
     </div>
   );
-};
+}; //end LoginPage
 
 export const SignUpPage = () => {
   const [token, setToken] = useToken();
@@ -524,37 +572,44 @@ export const SignUpPage = () => {
   };
 
   return (
-    <div className="content-container w-screen md:w-7/12">
-      <div id="login-container " className="bg-white w-4/5 md:w-5/12">
-        <h1 className="heading my-10 font-Le-Havre text-3xl">Sign Up</h1>
+    <div className="content-container w-full md:w-7/12">
+      <div
+        id="login-container "
+        className="rounded p-2 bg-white w-full md:w-6/12"
+      >
+        <img src={logo} className="App-logo" alt="logo" />
+        <h1 className="heading  font-Le-Havre text-3xl">Sign Up</h1>
 
         {errorMessage && <div className="fail">{errorMessage}</div>}
         <input
-          className="font-Raleway"
+          className="font-Raleway text-center"
           value={emailValue}
+          type="text"
           //binding state to input
           onChange={(e) => setEmailValue(e.target.value)}
           placeholder="youremail@gmail.com"
         />
 
         <input
-          className="font-Raleway"
+          className="font-Raleway text-center"
           value={passwordValue}
+          type="text"
           //binding state to input
           onChange={(e) => setPasswordValue(e.target.value)}
           placeholder="password"
         />
 
         <input
-          className="font-Raleway"
+          className="font-Raleway text-center"
           value={confirmPasswordValue}
           //binding state to input
+          type="text"
           onChange={(e) => setConfirmPasswordValue(e.target.value)}
           placeholder="confirm password"
         />
 
         <button
-          className="font-Raleway"
+          className="font-Raleway signup-button"
           disabled={
             !emailValue ||
             !passwordValue ||
@@ -565,13 +620,18 @@ export const SignUpPage = () => {
           Sign Up
         </button>
 
-        <button className="font-Raleway" onClick={() => history.push("/login")}>
+        <button
+          className="font-Raleway focus:ring-8 "
+          onClick={() => history.push("/login")}
+        >
           Already have an account? Login
         </button>
-        <button className="font-Raleway" onClick={() => history.push("/")}>
-          Back Home
+        <button
+          className="back-home-button text-white font-Raleway"
+          onClick={() => history.push("/")}
+        >
+          Home
         </button>
-        <img src={logo} className="App-logo" alt="logo" />
       </div>
     </div>
   );
@@ -831,19 +891,21 @@ export const ForgotPasswordPage = () => {
   };
 
   return success ? (
-    <div className="content-container">
-      <h1 className="heading my-5 font-Le-Havre text-3xl">Success</h1>
-      <p className="font-Raleway">Check your email for a reset link</p>
-    </div>
+    <>
+      <h1 className="heading my-5 font-Le-Havre text-3xl">Success!</h1>
+      <p className="font-Raleway">Please check your email for a reset link.</p>
+    </>
   ) : (
-    <div className="content-container w-screen md:w-7/12">
-      <h1 className="heading my-5 font-Le-Havre text-3xl">Forgot Password</h1>
+    // <div className="content-container w-screen md:w-7/12">
+    <>
+      <h1 className="heading my-5 font-Le-Havre text-3xl">Forgot Password?</h1>
       <p className="font-Raleway">
-        Enter your email and we'll send you a reset link
+        No worries! Just enter your email address and you'll automatically
+        receive a reset link.
       </p>
       {errorMessage && <div className="fail">{errorMessage}</div>}
       <input
-        className="font-Raleway"
+        className="font-Raleway text-center"
         value={emailValue}
         onChange={(e) => setEmailValue(e.target.value)}
         placeholder="youremail@mail.com"
@@ -857,10 +919,11 @@ export const ForgotPasswordPage = () => {
       </button>
 
       <button className="font-Raleway" onClick={() => history.push("/")}>
-        Back Home
+        Home
       </button>
       <img src={logo} className="App-logo" alt="logo" />
-    </div>
+    </>
+    // </div>
   );
 };
 

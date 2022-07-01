@@ -5,7 +5,7 @@ export const Navigation = () => {
 
   function removeActiveHome() {
     const heading = document.querySelector(".heading").innerText;
-    if (heading === "Chris Mazzochi, React Developer") {
+    if (heading === "Welcome to My Full Stack React Demo") {
       console.log("True that baby : " + heading);
     }
     document.querySelector("#homeLink").classList.remove("active");
@@ -24,7 +24,7 @@ export const Navigation = () => {
   }
 
   return (
-    <nav>
+    <nav className="">
       <ul>
         <li>
           <NavLink id="homeLink" exact to="/" onClick={addActiveHome}>

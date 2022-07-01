@@ -34,7 +34,7 @@ const PasswordResetFailure = React.lazy(() =>
 export const App = () => {
   return (
     <div className="App">
-      <div className="page-container bg-gradient-to-t from-gray-400 to-blue-400">
+      <div className="page-container overflow-auto h-screen md:p-10 bg-gradient-to-t from-gray-400 to-blue-400">
         <Router>
           <Switch>
             <React.Suspense fallback="Loading...">
